@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import{RouterModule, Routes} from '@angular/router';
-
 
 import { AppComponent } from './app.component';
 import { ProductPageComponent } from './product-page/product-page.component';
@@ -13,6 +11,12 @@ import {ProductService} from './product.service';
 import { ProductTracklistingComponent } from './product-tracklisting/product-tracklisting.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
+import{RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes =[
+  {path: 'products', component: ProductListComponent}, 
+  {path: 'products/id', component: ProductPageComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,8 @@ import { ProductListComponent } from './product-list/product-list.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
